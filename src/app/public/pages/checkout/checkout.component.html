@@ -1,0 +1,143 @@
+<div class="container mt-5">
+    <div class="row">
+      <div class="col-md-6 col-12">
+
+<form [formGroup]="userForm" (ngSubmit)="onSubmit()" class="container mt-5">
+    <fieldset class="border p-4">
+      <legend class="w-auto px-2">User Information</legend>
+      
+      <div class="wave-group mb-3">
+        <input id="name" formControlName="name" type="text" class="input form-control" required>
+        <span class="bar"></span>
+        <label for="name" class="label">
+          <span class="label-char" style="--index: 0">N</span>
+          <span class="label-char" style="--index: 1">a</span>
+          <span class="label-char" style="--index: 2">m</span>
+          <span class="label-char" style="--index: 3">e</span>
+        </label>
+        <div *ngIf="formControls['name'].errors && (formControls['name'].touched || formControls['name'].dirty)" class="text-danger mt-1">
+          <small *ngIf="formControls['name'].errors?.['required']">Name is required.</small>
+        </div>
+      </div>
+  
+      <div class="wave-group mb-3">
+        <input id="email" formControlName="email" type="email" class="input form-control" required>
+        <span class="bar"></span>
+        <label for="email" class="label">
+          <span class="label-char" style="--index: 0">E</span>
+          <span class="label-char" style="--index: 1">m</span>
+          <span class="label-char" style="--index: 2">a</span>
+          <span class="label-char" style="--index: 3">i</span>
+          <span class="label-char" style="--index: 4">l</span>
+        </label>
+        <div *ngIf="formControls['email'].errors && (formControls['email'].touched || formControls['email'].dirty)" class="text-danger mt-1">
+          <small *ngIf="formControls['email'].errors?.['required']">Email is required.</small>
+          <small *ngIf="formControls['email'].errors?.['email']">Email is invalid.</small>
+        </div>
+      </div>
+  
+      <div class="wave-group mb-3">
+        <input id="phone" formControlName="phone" type="text" class="input form-control" maxlength="10" required>
+        <span class="bar"></span>
+        <label for="phone" class="label">
+          <span class="label-char" style="--index: 0">P</span>
+          <span class="label-char" style="--index: 1">h</span>
+          <span class="label-char" style="--index: 2">o</span>
+          <span class="label-char" style="--index: 3">n</span>
+          <span class="label-char" style="--index: 4">e</span>
+        </label>
+        <div *ngIf="formControls['phone'].errors && (formControls['phone'].touched || formControls['phone'].dirty)" class="text-danger mt-1">
+          <small *ngIf="formControls['phone'].errors?.['required']">Phone number is required.</small>
+          <small *ngIf="formControls['phone'].errors?.['pattern']">Phone number is invalid. Must be 10 digits.</small>
+        </div>
+      </div>
+  
+      <div class="wave-group mb-3">
+        <input id="address" formControlName="address" type="text" class="input form-control" required>
+        <span class="bar"></span>
+        <label for="address" class="label">
+          <span class="label-char" style="--index: 0">A</span>
+          <span class="label-char" style="--index: 1">d</span>
+          <span class="label-char" style="--index: 2">d</span>
+          <span class="label-char" style="--index: 3">r</span>
+          <span class="label-char" style="--index: 4">e</span>
+          <span class="label-char" style="--index: 5">s</span>
+          <span class="label-char" style="--index: 6">s</span>
+        </label>
+        <div *ngIf="formControls['address'].errors && (formControls['address'].touched || formControls['address'].dirty)" class="text-danger mt-1">
+          <small *ngIf="formControls['address'].errors?.['required']">Address is required.</small>
+        </div>
+      </div>
+  
+      <div class="wave-group mb-3">
+        <input id="pincode" formControlName="pincode" type="text" class="input form-control" required>
+        <span class="bar"></span>
+        <label for="pincode" class="label">
+          <span class="label-char" style="--index: 0">P</span>
+          <span class="label-char" style="--index: 1">i</span>
+          <span class="label-char" style="--index: 2">n</span>
+          <span class="label-char" style="--index: 3">c</span>
+          <span class="label-char" style="--index: 4">o</span>
+          <span class="label-char" style="--index: 5">d</span>
+          <span class="label-char" style="--index: 6">e</span>
+        </label>
+        <div *ngIf="formControls['pincode'].errors && (formControls['pincode'].touched || formControls['pincode'].dirty)" class="text-danger mt-1">
+          <small *ngIf="formControls['pincode'].errors?.['required']">Pincode is required.</small>
+          <small *ngIf="formControls['pincode'].errors?.['pattern']">Pincode is invalid. Must be 6 digits.</small>
+        </div>
+      </div>
+  
+      <div class="wave-group mb-3">
+        <input id="quantity" formControlName="quantity" type="number" class="input form-control" required>
+        <span class="bar"></span>
+        <label for="quantity" class="label">
+          <span class="label-char" style="--index: 0">Q</span>
+          <span class="label-char" style="--index: 1">u</span>
+          <span class="label-char" style="--index: 2">a</span>
+          <span class="label-char" style="--index: 3">n</span>
+          <span class="label-char" style="--index: 4">t</span>
+          <span class="label-char" style="--index: 5">i</span>
+          <span class="label-char" style="--index: 6">t</span>
+          <span class="label-char" style="--index: 7">y</span>
+        </label>
+        <div *ngIf="formControls['quantity'].errors && (formControls['quantity'].touched || formControls['quantity'].dirty)" class="text-danger mt-1">
+          <small *ngIf="formControls['quantity'].errors?.['required']">Quantity is required.</small>
+          <small *ngIf="formControls['quantity'].errors?.['min']">Quantity must be at least 1.</small>
+        </div>
+      </div>
+  
+      <div class="wave-group mb-3">
+        <textarea id="remarks" formControlName="remarks" class="input form-control"></textarea>
+        <span class="bar"></span>
+        <label for="remarks" class="label">
+          <span class="label-char" style="--index: 0">R</span>
+          <span class="label-char" style="--index: 1">e</span>
+          <span class="label-char" style="--index: 2">m</span>
+          <span class="label-char" style="--index: 3">a</span>
+          <span class="label-char" style="--index: 4">r</span>
+          <span class="label-char" style="--index: 5">k</span>
+          <span class="label-char" style="--index: 6">s</span>
+        </label>
+      </div>
+  
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </fieldset>
+  </form>
+      </div>
+
+      <div class="col-md-6 col-12">
+
+    <div class="book-component">
+      <div class="book-thumbnail">
+        <img width="200px" height="auto" src="{{bookdata.image}}" alt="Book Thumbnail 1">
+      </div>
+      <div class="book-details">
+        <h2 class="book-title">{{bookdata?.name}}</h2>
+        <p class="book-author">{{bookdata.price}}</p>
+        <p class="book-description">{{bookdata.description | slice:0:100}}</p>
+       
+      </div>
+    </div>
+
+      </div>
+    </div>

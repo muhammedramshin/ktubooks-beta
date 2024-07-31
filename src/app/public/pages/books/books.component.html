@@ -1,0 +1,26 @@
+<div class="books-collection">
+    <div class="book-component" *ngFor="let book of books">
+      <div class="book-thumbnail">
+        <img src="{{book.image}}" alt="Book Thumbnail 1">
+      </div>
+      <div class="book-details">
+        <h2 class="book-title">{{book?.name}}</h2>
+        <p class="book-author">{{book.price}}</p>
+        <p class="book-description">{{book.description | slice:0:100}}</p>
+        <button class="buy-button">Buy Now</button>
+      </div>
+    </div>
+    <!-- Repeat the book-component div for more books -->
+    <div class="book-component">
+      <div class="book-thumbnail">
+        <img src="path_to_book_thumbnail_2.jpg" alt="Book Thumbnail 2">
+      </div>
+      <div class="book-details">
+        <h2 class="book-title">Book Title 2</h2>
+        <p class="book-author">by Author Name 2</p>
+        <p class="book-description">Description for book 2...</p>
+        <button class="buy-button">Buy Now</button>
+      </div>
+    </div>
+    <!-- Add more book components as needed -->
+  </div>

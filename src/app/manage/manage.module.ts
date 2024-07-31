@@ -73,6 +73,9 @@ import { EstimationComponent } from './pages/money/estimation/estimation.compone
 import { EstimationListComponent } from './pages/money/estimation-list/estimation-list.component';
 import { TransactionFormComponent } from './pages/card-manager/transaction-form/transaction-form.component';
 import { ViewTrasactionsComponent } from './pages/card-manager/view-trasactions/view-trasactions.component';
+import { BooksComponent } from './pages/books/books.component';
+import { BooksFormComponent } from './pages/books/books-form/books-form.component';
+import { CheckoutComponent } from './pages/checkout/checkout.component';
 
 export class MyHammerConfig extends HammerGestureConfig {
   override overrides = <any> {
@@ -124,7 +127,10 @@ export class MyHammerConfig extends HammerGestureConfig {
     EstimationComponent,
     EstimationListComponent,
     TransactionFormComponent,
-    ViewTrasactionsComponent
+    ViewTrasactionsComponent,
+    BooksComponent,
+    BooksFormComponent,
+    CheckoutComponent
   ],
   imports: [
     CommonModule,

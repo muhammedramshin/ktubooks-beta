@@ -5,12 +5,13 @@
 export const environment = {
   production: false,
   firebaseConfig :{
-    apiKey: "AIzaSyAsAWiy6wo0BsfQyFP-2mdNQwMyhYIw_IU",
-    authDomain: "mywebx-87ffd.firebaseapp.com",
-    projectId: "mywebx-87ffd",
-    storageBucket: "mywebx-87ffd.appspot.com",
-    messagingSenderId: "230276992585",
-    appId: "1:230276992585:web:a8646b7b626d14b34e7998"
+    apiKey: "AIzaSyC1Bmi2xpxTTgK99qDbaxL4CsBQ228Nr8o",
+    authDomain: "ktu-assist-4db4a.firebaseapp.com",
+    projectId: "ktu-assist-4db4a",
+    storageBucket: "ktu-assist-4db4a.appspot.com",
+    messagingSenderId: "962258677759",
+    appId: "1:962258677759:web:30d460ea1fa88a16edc1ca",
+    measurementId: "G-FGHDCWKZKC"
   },
   version: '1.3.0',
   

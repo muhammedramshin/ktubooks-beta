@@ -29,6 +29,8 @@ import { DocumentsEditorComponent } from './pages/documents-editor/documents-edi
 import { CardManagerComponent } from './pages/card-manager/card-manager.component';
 import { EstimationComponent } from './pages/money/estimation/estimation.component';
 import { EstimationListComponent } from './pages/money/estimation-list/estimation-list.component';
+import { BooksComponent } from '../manage/pages/books/books.component';
+import { BooksFormComponent } from './pages/books/books-form/books-form.component';
 
 
 
@@ -53,6 +55,8 @@ const routes: Routes = [{ path: '', component: ManageComponent,
               
             ]
           },
+          {path:'books',component:BooksComponent},
+          {path:'books/add',component:BooksFormComponent},
           {path:'cart',component:CartComponent},
           {path:'files',component:FilegalleryComponent},
           {path:'documents',component:DocumentsComponent},
