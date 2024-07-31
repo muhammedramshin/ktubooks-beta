@@ -1,0 +1,22 @@
+<div class="container">
+
+    <div class="a-box d-flex">
+        <div class="type-btn" [ngClass]="{'active':action=='add'}" (click)="action='add'">ADD</div>
+        <div class="type-btn" [ngClass]="{'active':action=='substract'}" (click)="action='substract'">SUBSTRACT</div>
+    </div>
+
+    <div class="form-group">
+        <label for="name">Amount</label>
+        <input type="number" class="form-control" id="name" placeholder="amount" [(ngModel)]="amount">
+    </div>
+    <div class="form-group">
+        <label for="notes">Notes</label>
+        <input type="text" class="form-control" id="name" placeholder="amount" [(ngModel)]="notes">
+    </div>
+
+    <div class="action">
+        <button class="btn btn-primary" (click)="updateAccount()">{{action=='add'?'ADD':'SUBSTRACT'}}</button>
+        <button class="btn btn-danger" (click)="close()">Close</button>
+    </div>
+
+</div>

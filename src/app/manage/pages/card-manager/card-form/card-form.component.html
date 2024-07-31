@@ -1,0 +1,38 @@
+<div class="fixActionRow">
+    <h1 mat-dialog-title>User Form</h1>
+    <div mat-dialog-content>
+        <mat-form-field appearance="fill">
+            <input matInput placeholder="Card Name" [(ngModel)]="cardName" name="cardName">
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Card Type</mat-label>
+            <mat-select [(ngModel)]="cardType" name="cardType">
+                <mat-option value="credit">Credit</mat-option>
+                <mat-option value="debit">Debit</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <input matInput placeholder="Card Number" [(ngModel)]="cardNumber" name="cardNumber">
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <input matInput placeholder="Card CVV" [(ngModel)]="cardCVV" name="cardCVV">
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <input matInput placeholder="Card From Date" [(ngModel)]="cardFromDate" name="cardfrom">
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <input matInput placeholder="Card Expiry Date" [(ngModel)]="cardExpiryDate" name="cardExpiryDate">
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <input matInput placeholder="Card Bill Date" [(ngModel)]="cardBillDate" name="cardBillDate">
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <input matInput placeholder="Card limit" [(ngModel)]="limit" name="cardlimit">
+        </mat-form-field>
+    </div>
+    <div class="spacer"></div>
+    <div mat-dialog-actions align="end">
+        <button mat-button (click)="close()">CANCEL</button>
+        <button mat-button (click)="save()">CREATE</button>
+    </div>
+</div>

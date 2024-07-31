@@ -1,0 +1,22 @@
+<div class="actions">
+
+    <input type="text" class="form-control" placeholder="search" [(ngModel)]="search" (keyup)="searchFile()">
+    <button class="btn btn-primary button" (click)="fileupload()">  <mat-icon mat-list-icon>upload</mat-icon></button>
+
+</div>
+
+<div class="galery">
+
+    <div class="item-box" [matMenuTriggerFor]="menu" *ngFor="let file of allfiles">
+        <img class="item" *ngIf="file.label!='file'" src="{{file.url}}" width="100px" height="100px" alt="">
+        <img class="item" *ngIf="file.label=='file'" src="assets\document.jpg" width="100px" height="100px" alt="">
+        <div class="label-item">{{file.name}}</div>
+        <mat-menu #menu="matMenu">
+            <button mat-menu-item (click)="view(file)">View</button>
+            <button mat-menu-item (click)="deleteRecord(file)">Remove</button>
+            <!-- Add more menu items as needed -->
+        </mat-menu>
+    </div>
+
+
+</div>

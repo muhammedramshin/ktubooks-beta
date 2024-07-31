@@ -1,0 +1,10 @@
+<div class="card">
+
+    <div *ngFor="let item of estimates" class="card-body estimation">
+        <div (click)="edit(item)">{{item.name}}</div>
+        <button (click)="delete(item)" class="btn btn-danger">X</button>
+
+    </div>
+
+
+</div>

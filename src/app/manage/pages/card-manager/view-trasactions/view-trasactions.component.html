@@ -1,0 +1,41 @@
+<div class="cred-box">
+    <div class="card-head mt-5">
+        <div class="card-title mt-3">{{data.name}} | Outstanding Amount :  {{outstanding}}</div>
+    </div>
+
+    <div class="card-body mt-3">
+        <table class="table table-bordered table-striped table-responsive" *ngIf="transactions.length>0">
+            <thead class="thead-light">
+            <tr>
+                <th>Date</th>
+                <th>Type</th>
+                <th>Amount</th>
+                <th>Description</th>
+                <th>action</th>
+            </tr>
+            </thead>
+            <tr *ngFor="let item of transactions">
+                <td>{{item?.createdAt?.seconds*1000 |date:'shortDate'}}</td>
+                <td>{{item?.type}}</td>
+                <td>{{item?.amount}}</td>
+                <td>{{item?.description}}</td>
+                <td class="d-flex justify-content-center"> 
+                    <button (click)="remove(item)" class="btn btn-danger btn-x m-1">X</button>
+                </td>
+            </tr>
+        </table>
+        <div *ngIf="transactions.length==0">No Transactions</div>
+
+       
+
+    </div>
+
+
+
+   
+  
+
+</div>
+<button class="btn btn-danger closebtn" (click)="close()">Close</button>
+
+

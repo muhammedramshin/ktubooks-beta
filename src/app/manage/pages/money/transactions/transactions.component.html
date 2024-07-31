@@ -1,0 +1,183 @@
+<div class="card-box-with-head bx">
+
+    <div class="">
+        <div class="date-box">
+
+
+            <div *ngIf="selectedIndex==0"><span class="in">₹ {{todayIn}} </span><span class="out">₹ {{todayOut}}</span></div>
+            <div *ngIf="selectedIndex==1"><span class="in">₹ {{customIn}}</span> <span class="out">₹ {{customOut}}</span></div>
+            <div *ngIf="selectedIndex==3"><span class="in">₹ {{reportIn}}</span> <span class="out">₹ {{reportOut}}</span></div>
+
+        </div>
+        <mat-tab-group [(selectedIndex)]="selectedIndex">
+
+
+
+            <mat-tab label="Today">
+                <div class="card-over">
+                    <div class="card-box-child" *ngFor="let item of todaysTranaction" [ngClass]="{'green-border':item.action=='IN','red-border':item.action=='OUT'}">
+                        <div class="column-flex">
+                            <div class="tranxn">
+                                <div class="item-flex-1">
+                                    <div>{{item.type}} </div>
+                                    <div class="item-b2">{{item.expenceof}}</div>
+                                </div>
+                                <div *ngIf="item.type=='LENDING'">{{item.loanTo}} </div>
+                                <div class="icon-flex" [ngClass]="{'green':item.action=='IN','red':item.action=='OUT'}">
+                                    {{item.action=='IN'?'+':'-'}}
+                                    <mat-icon class="mat-ico">currency_rupee</mat-icon> {{item.amount}}
+                                </div>
+                            </div>
+                            <div class="meta-data">
+                                <div>{{item.date?.seconds*1000|date:'medium'}}</div>
+                                <div class="item-b2">{{item?.notes}}</div>
+                                <button class="btn btn-primary btn-delete" (click)="delete(item?.id)">
+                                <mat-icon class="mat-ico-1">delete</mat-icon>
+                            </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </mat-tab>
+
+            <mat-tab>
+                <ng-template mat-tab-label>
+                    <input matInput placeholder="Date" [(ngModel)]="selectedDate" (dateChange)="filter()" style="width:80px" [matDatepicker]="picker1">
+                    <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
+                    <mat-datepicker #picker1></mat-datepicker>
+                </ng-template>
+
+
+                <div class="card-over" *ngIf="onDateTransactions">
+                    <div class="card-box-child" *ngFor="let item of onDateTransactions" [ngClass]="{'green-border':item.action=='IN','red-border':item.action=='OUT'}">
+                        <div class="column-flex">
+                            <div class="tranxn">
+                                <div class="item-flex-1">
+                                    <div>{{item.type}} </div>
+                                    <div class="item-b2">{{item.expenceof}}</div>
+                                </div>
+                                <div *ngIf="item.type=='LENDING'">{{item.loanTo}} </div>
+                                <div class="icon-flex" [ngClass]="{'green':item.action=='IN','red':item.action=='OUT'}">
+                                    {{item.action=='IN'?'+':'-'}}
+                                    <mat-icon class="mat-ico">currency_rupee</mat-icon> {{item.amount}}
+                                </div>
+                            </div>
+                            <div class="meta-data">
+                                <div>{{item.date?.seconds*1000|date:'medium'}}</div>
+                                <div class="item-b2">{{item?.notes}}</div>
+                                <button class="btn btn-primary btn-delete" (click)="delete(item?.id)">
+                                <mat-icon class="mat-ico-1">delete</mat-icon>
+                            </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </mat-tab>
+
+            <mat-tab label="All">
+                <div class="card-over">
+                    <div class="card-box-child" *ngFor="let item of trascations" [ngClass]="{'green-border':item.action=='IN','red-border':item.action=='OUT'}">
+                        <div class="column-flex">
+                            <div class="tranxn">
+                                <div class="item-flex-1">
+                                    <div>{{item.type}} </div>
+                                    <div class="item-b2">{{item.expenceof}}</div>
+                                </div>
+                                <div *ngIf="item.type=='LENDING'">{{item.loanTo}} </div>
+                                <div class="icon-flex" [ngClass]="{'green':item.action=='IN','red':item.action=='OUT'}">
+                                    {{item.action=='IN'?'+':'-'}}
+                                    <mat-icon class="mat-ico">currency_rupee</mat-icon> {{item.amount}}
+                                </div>
+                            </div>
+                            <div class="meta-data">
+                                <div>{{item.date?.seconds*1000|date:'medium'}}</div>
+                                <div class="item-b2">{{item?.notes}}</div>
+                                <button class="btn btn-primary btn-delete" (click)="delete(item?.id)">
+                                <mat-icon class="mat-ico-1">delete</mat-icon>
+                            </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </mat-tab>
+
+            <mat-tab label="Report">
+                <div class="card-over">
+
+                    <div class="row filter-box">
+                        <!-- action type filter -->
+                        <div class="col">
+                            <mat-form-field>
+
+                                <mat-date-range-input [rangePicker]="picker2">
+                                    <input matStartDate [(ngModel)]="selectedDateReportStart" placeholder="Start date">
+                                    <input matEndDate [(ngModel)]="selectedDateReportEnd" placeholder="End date">
+
+                                </mat-date-range-input>
+                                <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
+
+                                <mat-date-range-picker #picker2></mat-date-range-picker>
+
+                            </mat-form-field>
+                        </div>
+                        <div class="col">
+                            <mat-form-field>
+                                <mat-select placeholder="Action Type" [(ngModel)]="filterActionType" (selectionChange)="filterReport()">
+                                    <mat-option value="IN">
+                                        IN
+                                    </mat-option>
+                                    <mat-option value="OUT">
+                                        OUT
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                        <div class="col">
+                            <mat-form-field *ngIf="filterActionType=='OUT'">
+                                <mat-select placeholder="Expence for" [(ngModel)]="filterexpenceOf" (selectionChange)="filterReportExpenceOf()">
+                                    <mat-option [value]="item?.expencetype" *ngFor="let item of expencetypes">
+                                        {{ item?.expencetype}}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                        <div class="col">
+                            <button (click)="exportToPdf()" class="btn btn-primary">
+                                <mat-icon mat-list-icon>downloading</mat-icon>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="card-box-child" *ngFor="let item of trascationsReport" [ngClass]="{'green-border':item.action=='IN','red-border':item.action=='OUT'}">
+                        <div class="column-flex">
+                            <div class="tranxn">
+                                <div class="item-flex-1">
+                                    <div>{{item.type}} </div>
+                                    <div class="item-b2">{{item.expenceof}}</div>
+                                </div>
+                                <div *ngIf="item.type=='LENDING'">{{item.loanTo}} </div>
+                                <div class="icon-flex" [ngClass]="{'green':item.action=='IN','red':item.action=='OUT'}">
+                                    {{item.action=='IN'?'+':'-'}}
+                                    <mat-icon class="mat-ico">currency_rupee</mat-icon> {{item.amount}}
+                                </div>
+                            </div>
+                            <div class="meta-data">
+                                <div>{{item.date?.seconds*1000|date:'medium'}}</div>
+                                <div class="item-b2">{{item?.notes}}</div>
+                                <button class="btn btn-primary btn-delete" (click)="delete(item?.id)">
+                                <mat-icon class="mat-ico-1">delete</mat-icon>
+                            </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </mat-tab>
+        </mat-tab-group>
+    </div>
+
+
+</div>

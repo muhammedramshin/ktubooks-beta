@@ -1,0 +1,61 @@
+<div class="summery">
+    <strong>Credit Outstanding: </strong> <span class="entity"> ₹{{totalOutstanding | number:'1.0-0'}}</span>
+</div>
+<div class="h-bar">
+   
+    <mat-form-field appearance="fill">
+        <input matInput placeholder="Card" [(ngModel)]="search" (keyup)="searchCard()" name="search">
+    </mat-form-field>
+    <button class="btn btn-primary" (click)="addCard()">Add</button></div>
+
+<div class="f-btn-box">
+    <button class="f-btn" [ngClass]="{'f-btn-active': typeFilter === 'all'}" (click)="filterCard('all')">All</button>
+    <button class="f-btn" [ngClass]="{'f-btn-active': typeFilter === 'credit'}" (click)="filterCard('credit')">Credit</button>
+    <button class="f-btn" [ngClass]="{'f-btn-active': typeFilter === 'debit'}" (click)="filterCard('debit')">Dedit</button>
+</div>
+
+<div class="all-cards">
+
+    <div class="card-x" *ngFor="let card of cards;let i=index" [style.background]="generateBackground(card.cardtype,i)">
+        <div class="card-type-label">{{card?.cardtype}}</div>
+        <div class="card-name item">
+            <div>{{card?.name}}</div>
+            <div (click)="addTransaction(card)" class="copy"><i class="fa fa-plus-circle" aria-hidden="true"></i></div>
+
+        </div>
+        <div class="card-number c-flex item">
+            <div *ngIf="displayData!=card.id">{{cardNumberDisplay(card?.cardnumber)}}</div>
+            <div *ngIf="displayData==card.id">{{cardNumberDisplayData(card?.cardnumber)}}</div>
+            <div (click)="copyToClipboard(card?.cardnumber,'Card Number')" class="copy"><i class="fa fa-copy" aria-hidden="true"></i></div>
+
+        </div>
+        <div class="card-number c-flex item">
+            <div *ngIf="displayData!=card.id">***</div>
+            <div *ngIf="displayData==card.id">{{cardcvvDisplayData(card)}}</div>
+            <div (click)="copyToClipboard(card?.cvv,'CVV')" class="copy"><i class="fa fa-copy" aria-hidden="true"></i></div>
+        </div>
+        <div class="card-date c-flex item">
+            <div>FROM: {{card?.cardfrom}}</div>
+            <div>TO: {{card?.cardexpiry}}</div>
+            <div>BILL: {{card?.cardbilldate}}</div>
+        </div>
+
+        <div class="card-limit item" *ngIf="card?.cardtype=='credit'" >
+            <div>{{card?.outstanding}}</div>
+            <div>{{card?.limit}}</div>
+            <div >{{ getTotal(card) }}</div>
+            
+        </div>
+        <div class="item-right">
+            <div (click)="viiewTrasactions(card)" class="copy"><i class="fa fa-file-text-o" aria-hidden="true"></i></div>
+            <div (click)="copyAll(card)" class="copy"><i class="fa fa-copy" aria-hidden="true"></i></div>
+            <div (click)="showCred(card)" class="copy"><i class="fa fa-eye" aria-hidden="true"></i></div>
+        </div>
+      
+
+
+
+    </div>
+
+
+</div>

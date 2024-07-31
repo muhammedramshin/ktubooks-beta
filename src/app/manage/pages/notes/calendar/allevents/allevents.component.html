@@ -1,0 +1,45 @@
+<div class="events-box">
+
+    <div class="inputs">
+        <div class="input-item">
+            <mat-form-field class="dateinput">
+                <mat-label>Year</mat-label>
+                <mat-select [(value)]="selectedYear" (selectionChange)="filterMonthLineChart()">
+                    <mat-option *ngFor="let year of yearList" [value]="year.id">
+                        {{year.name}}
+                    </mat-option>
+                </mat-select>
+
+            </mat-form-field>
+            <!-- select month -->
+
+        </div>
+        <div class="input-item">
+
+            <mat-form-field class="dateinput">
+                <mat-label>Month</mat-label>
+                <mat-select [(value)]="selectedMonth" (selectionChange)="filterMonthLineChart()">
+                    <mat-option *ngFor="let month of monthList" [value]="month.id">
+                        {{month.name}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+    </div>
+
+
+
+    <div class="allevents">
+        <div class="events" *ngFor="let item of events">
+            <div class="d-label">
+                <div class="m-label">{{item.date?.seconds*1000 |date:'MMM'}}</div>
+                <div class="dd-label">{{item.date?.seconds*1000 |date:'dd'}}</div>
+            </div>
+            <div class="e-data">
+                <div class="e-title">{{item.title}}</div>
+                <div class="e-description">{{item.description}}</div>
+            </div>
+        </div>
+    </div>
+
+</div>

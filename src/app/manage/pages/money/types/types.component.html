@@ -1,0 +1,42 @@
+<div class="card-box-with-head">
+    <mat-tab-group>
+        <mat-tab>
+            <ng-template mat-tab-label>
+                <span>Expence</span>
+            </ng-template>
+
+            <app-expence-types></app-expence-types>
+        </mat-tab>
+
+        <mat-tab>
+            <ng-template mat-tab-label>
+                <span>Account Type</span>
+            </ng-template>
+
+            <ng2-smart-table [settings]="accountsettings" [source]="accountSource" (editConfirm)="editAccountType($event)" (createConfirm)="createAccountType($event)" (deleteConfirm)="deleteAccountType($event)"></ng2-smart-table>
+
+        </mat-tab>
+        <mat-tab>
+            <ng-template mat-tab-label>
+                <span>Income Types</span>
+            </ng-template>
+
+            <ng2-smart-table [settings]="incomesettings" [source]="incomeSource" (editConfirm)="editIncomeType($event)" (createConfirm)="createIncomeType($event)" (deleteConfirm)="deleteIncomeType($event)"></ng2-smart-table>
+        </mat-tab>
+        <mat-tab>
+            <ng-template mat-tab-label>
+                <span>Money Notes</span>
+            </ng-template>
+
+            <ng2-smart-table [settings]="moneynotesettings" [source]="moneynoteSource" (createConfirm)="createMoneyNote($event)" (editConfirm)="updateMoneyNote($event)" (deleteConfirm)="deleteMoneyNote($event)"></ng2-smart-table>
+        </mat-tab>
+        <mat-tab>
+            <ng-template mat-tab-label>
+                <span>Activities</span>
+            </ng-template>
+
+            <app-activities></app-activities>
+        </mat-tab>
+
+    </mat-tab-group>
+</div>

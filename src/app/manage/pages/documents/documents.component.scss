@@ -1,0 +1,71 @@
+.action-bar {
+    position: absolute;
+    bottom: 5px;
+    right: 10px;
+}
+
+.editor {
+    height: calc(100vh - 130px);
+    width: 100%;
+    background: #f2f2f2;
+}
+
+.quill-css {
+    height: calc(100vh - 230px);
+    overflow-y: scroll;
+    display: block;
+    border: 5px solid;
+    margin-bottom: 10px;
+}
+
+.ql-toolbar.ql-snow {
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    font-family: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+    padding: 8px;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    background: aliceblue!important;
+}
+
+.actions {
+    display: flex;
+    justify-self: center;
+    align-items: center;
+    padding: 5px;
+    background: #c3c3c3;
+}
+
+.button {
+    width: 60px;
+    margin: 0px 5px;
+}
+
+.docs {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    column-gap: 10px;
+    margin-top: 5px;
+    margin-left: 10px;
+}
+
+.item-box {
+    position: relative;
+}
+
+.item {
+    border: 1px solid black;
+    padding: 6px;
+    position: relative;
+}
+
+.label-item {
+    background-color: rgb(0 0 0 / 38%);
+    color: white;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    padding-left: 5px;
+}

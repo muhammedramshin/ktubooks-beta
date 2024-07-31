@@ -1,0 +1,43 @@
+<div class="container">
+
+
+    <!-- <mat-tab-group #tabGroup class="tabs">
+        <mat-tab *ngFor="let tab of noteslist">
+            <ng-template mat-tab-label>
+                <span>{{tab?.name?tab?.name:'note'}}</span>
+            </ng-template>
+
+            <textarea name="notes" [(ngModel)]="tab.note" id="" cols="30" class="box-area" rows="10"></textarea>
+            <div class="d-flex justify-content-between">
+                <button class="btn btn-secondary" (click)="clearNotes(tab)">Clear</button>
+                <button class="btn btn-primary" (click)="update(tab)">Update</button>
+            </div>
+        </mat-tab>
+    </mat-tab-group> -->
+
+    <div class="tabs">
+        <div class="header-tab">
+            <div *ngFor="let tabname of noteslist; index as ix;" class="tab-list">
+                <div class="tab-tile" [ngClass]="{'active':selectTab==ix}" (click)="selectedTab(ix)">{{tabname?.name?tabname?.name:'note'}}</div>
+            </div>
+        </div>
+        <div class="tab" *ngFor="let tab of noteslist; index as i;">
+
+
+            <div *ngIf="selectTab==i">
+                <quill-editor class="quill-css" [(ngModel)]="tab.note" [modules]="quillConfig"></quill-editor>
+                <!-- <textarea name="notes" [(ngModel)]="tab.note" id="" cols="30" class="box-area" rows="10"></textarea> -->
+                <div class="d-flex justify-content-between">
+                    <button class="btn btn-secondary" (click)="clearNotes(tab)">Clear</button>
+                    <div class="time" (click)="update(tab)">{{tab?.updatedAt?.seconds*1000 | date:'short'}}</div>
+                    <button class="btn btn-primary" (click)="update(tab)">Update</button>
+                    <button class="btn btn-primary" (click)="openCalculator()">
+                        <mat-icon mat-list-icon >calculate</mat-icon>
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>

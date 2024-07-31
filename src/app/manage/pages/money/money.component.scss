@@ -1,0 +1,9 @@
+.money-outer {
+    padding: 20px;
+}
+
+@media screen and (max-width: 768px) {
+    .money-outer {
+        padding: 4px;
+    }
+}

@@ -1,0 +1,12 @@
+<div class="container">
+    <div class="d-flex justify-content-between actions">
+        <div>File viewer</div>
+        <button class="btn btn-danger" (click)="close()">X</button></div>
+    <div class="image-box" *ngIf="data?.type=='jpeg'||data?.type=='png'">
+        <img [src]="data?.url" alt="">
+    </div>
+    <div *ngIf="data?.type=='pdf'||data?.type=='docx'">
+
+        <ngx-doc-viewer [url]="data?.url" viewer="google" style="width:100%;height:80vh;"></ngx-doc-viewer>
+    </div>
+</div>

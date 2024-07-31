@@ -1,0 +1,24 @@
+.a-box {
+    font-size: 18px;
+    padding: 10px;
+    margin: 5px;
+}
+
+.type-btn {
+    font-size: 11px;
+    padding: 10px;
+    background: white;
+    color: black;
+    margin-right: 1pc;
+}
+
+.action {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.active {
+    background: #188218db;
+    color: white;
+}

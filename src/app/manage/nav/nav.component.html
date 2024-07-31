@@ -1,0 +1,151 @@
+<mat-toolbar color="primary" class="example-toolbar">
+    <div class="top-menu">
+        <button mat-icon-button (click)="toggleIfMobile()"><mat-icon>menu</mat-icon></button>
+        <h1 class="example-app-name">MyWebX</h1>
+    </div>
+    <div class="logout-btn">
+        <button mat-icon-button class="mx-2" routerLink="/manage"><mat-icon>home</mat-icon></button>
+
+    </div>
+</mat-toolbar>
+<mat-sidenav-container class="example-container" autosize>
+    <mat-sidenav #sidenav class="example-sidenav" [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async)?false:true" (mouseenter)="mouseenter()" (mouseleave)="mouseleave()">
+        <mat-nav-list>
+            <mat-list-item routerLink="/manage">
+                <span class="full-width" *ngIf="isExpanded || isShowing">Home</span>
+                <mat-icon mat-list-icon>home</mat-icon>
+            </mat-list-item>
+        </mat-nav-list>
+        <mat-nav-list>
+            <mat-list-item (click)="showSubmenu = !showSubmenu" class="parent">
+                <span class="full-width" *ngIf="isExpanded || isShowing">Money</span>
+                <mat-icon mat-list-icon>account_balance_wallet</mat-icon>
+                <mat-icon class="menu-button" [ngClass]="{'rotated' : showSubmenu}" *ngIf="isExpanded || isShowing">expand_more</mat-icon>
+            </mat-list-item>
+            <div class="submenu" [ngClass]="{'expanded' : showSubmenu}" *ngIf="isShowing || isExpanded">
+                <a mat-list-item routerLink="/manage/money/create">Create</a>
+                <a mat-list-item routerLink="/manage/money/transactions">Transactions</a>
+                <a mat-list-item routerLink="/manage/money/report">Reports</a>
+                <a mat-list-item routerLink="/manage/money/lenders">Lendings</a>
+                <a mat-list-item routerLink="/manage/money/estimation/new">Estimation</a>
+
+            </div>
+        </mat-nav-list>
+
+        <!-- <mat-nav-list>
+            <mat-list-item>
+                <span class="full-width" *ngIf="isExpanded1 || isShowing1">Expence</span>
+                <mat-icon mat-list-icon>menu</mat-icon>
+                <mat-icon class="menu-button" [ngClass]="{'rotated' : showSubmenu}" *ngIf="isExpanded1 || isShowing1">expand_more</mat-icon>
+            </mat-list-item>
+        </mat-nav-list> -->
+        <mat-nav-list>
+            <mat-list-item (click)="showSubmenuActive = showSubmenuActive=='calandar'?'':'calandar'">
+                <span class="full-width" *ngIf="isExpanded || isShowing">Calendar</span>
+                <mat-icon mat-list-icon>calendar_month</mat-icon>
+                <mat-icon class="menu-button" [ngClass]="{'rotated' : showSubmenuActive=='calandar'}" *ngIf="isExpanded || isShowing">expand_more</mat-icon>
+
+            </mat-list-item>
+            <div class="submenu" [ngClass]="{'expanded' : showSubmenuActive=='calandar'}" *ngIf="isShowing || isExpanded">
+                <a mat-list-item routerLink="/manage/calandar">calandar</a>
+                <a mat-list-item routerLink="/manage/allevents">All events</a>
+                <a mat-list-item routerLink="/manage/notes">Notes</a>
+
+            </div>
+        </mat-nav-list>
+        <mat-nav-list>
+            <mat-list-item routerLink="/manage/money/notes">
+                <span class="full-width" *ngIf="isExpanded || isShowing">Notes</span>
+                <mat-icon mat-list-icon>note</mat-icon>
+            </mat-list-item>
+        </mat-nav-list>
+        <mat-nav-list>
+            <mat-list-item routerLink="/manage/cart">
+                <span class="full-width" *ngIf="isExpanded || isShowing">Cart</span>
+                <mat-icon mat-list-icon>shopping_bag</mat-icon>
+            </mat-list-item>
+        </mat-nav-list>
+        <mat-nav-list>
+            <mat-list-item routerLink="/manage/files">
+                <span class="full-width" *ngIf="isExpanded || isShowing">Explore</span>
+                <mat-icon mat-list-icon>grid_on</mat-icon>
+            </mat-list-item>
+        </mat-nav-list>
+        <mat-nav-list>
+            <mat-list-item routerLink="/manage/documents">
+                <span class="full-width" *ngIf="isExpanded || isShowing">Documents</span>
+                <mat-icon mat-list-icon>article</mat-icon>
+            </mat-list-item>
+        </mat-nav-list>
+        <mat-nav-list>
+            <mat-list-item routerLink="/manage/card-manager">
+                <span class="full-width" *ngIf="isExpanded || isShowing">Cards</span>
+                <mat-icon mat-list-icon>credit_card</mat-icon>
+            </mat-list-item>
+        </mat-nav-list>
+
+
+        <mat-nav-list>
+            <mat-list-item (click)="showSubmenuActive = showSubmenuActive=='tasks'?'':'tasks'">
+                <span class="full-width" *ngIf="isExpanded || isShowing">Tasks</span>
+                <mat-icon mat-list-icon>task_alt</mat-icon>
+                <mat-icon class="menu-button" [ngClass]="{'rotated' : showSubmenuActive=='tasks'}" *ngIf="isExpanded || isShowing">expand_more</mat-icon>
+
+            </mat-list-item>
+            <div class="submenu" [ngClass]="{'expanded' : showSubmenuActive=='tasks'}" *ngIf="isShowing || isExpanded">
+                <a mat-list-item routerLink="/manage/tasks">Tasks</a>
+                <a mat-list-item routerLink="/manage/tasklabels">Labels</a>
+
+            </div>
+        </mat-nav-list>
+        <mat-nav-list>
+            <mat-list-item (click)="showSubmenu1 = !showSubmenu1">
+                <span class="full-width" *ngIf="isExpanded || isShowing">Actions</span>
+                <mat-icon mat-list-icon>power_settings_new</mat-icon>
+                <mat-icon class="menu-button" [ngClass]="{'rotated' : showSubmenu1}" *ngIf="isExpanded || isShowing">expand_more</mat-icon>
+
+            </mat-list-item>
+            <div class="submenu" [ngClass]="{'expanded' : showSubmenu1}" *ngIf="isShowing || isExpanded">
+
+
+                <a mat-list-item (click)="handleSignOut()">Logout</a>
+                <a mat-list-item (click)="exitApp()">Exist</a>
+            </div>
+        </mat-nav-list>
+
+
+
+
+
+        <div class="version">V {{version}}</div>
+
+    </mat-sidenav>
+
+    <div class="example-sidenav-content">
+        <router-outlet></router-outlet>
+    </div>
+
+
+
+</mat-sidenav-container>
+
+<!-- 
+<mat-nav-list>
+    <mat-list-item (click)="showSubmenu = !showSubmenu" class="parent">
+        <span class="full-width" *ngIf="isExpanded || isShowing">Money</span>
+        <mat-icon mat-list-icon>account_balance_wallet</mat-icon>
+        <mat-icon class="menu-button" [ngClass]="{'rotated' : showSubmenu}" *ngIf="isExpanded || isShowing">expand_more</mat-icon>
+    </mat-list-item>
+    <div class="submenu" [ngClass]="{'expanded' : showSubmenu}" *ngIf="isShowing || isExpanded">
+        <a mat-list-item href="...">Submenu Item 1</a>
+        <a mat-list-item href="...">Submenu Item 2</a>
+        <mat-list-item (click)="showSubSubMenu = !showSubSubMenu" class="parent">
+            <span class="full-width" *ngIf="isExpanded || isShowing">Nested Menu</span>
+            <mat-icon class="menu-button" [ngClass]="{'rotated' : showSubSubMenu}" *ngIf="isExpanded || isShowing">expand_more</mat-icon>
+        </mat-list-item>
+        <div class="submenu" [ngClass]="{'expanded' : showSubSubMenu}" *ngIf="isShowing || isExpanded">
+            <mat-list-item>SubSubmenu Item 1</mat-list-item>
+            <mat-list-item>SubSubmenu Item 2</mat-list-item>
+        </div>
+    </div>
+</mat-nav-list> -->

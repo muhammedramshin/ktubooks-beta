@@ -1,0 +1,250 @@
+.date {
+    background-color: #ffffffa6;
+    color: #0000006b;
+}
+
+.date:hover {
+    background-color: rgb(12, 35, 186);
+    cursor: pointer;
+}
+
+.calendar th {
+    text-align: center;
+    background: white;
+    border: none;
+    color: #0566ff;
+}
+
+.calendar td {
+    height: 35px;
+    text-align: center;
+    border: none;
+}
+
+.head-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    // margin: 10px;
+}
+
+.ismonth {
+    background-color: rgb(255, 255, 255);
+    color: #000000;
+}
+
+.today {
+    background-color: rgb(185, 107, 4);
+    color: #ffffff;
+    border-radius: 50px;
+}
+
+.activeSelect {
+    background-color: rgb(42, 24, 180);
+    color: #ffffff;
+}
+
+.bottom-box {
+    width: 100%;
+    overflow: hidden;
+}
+
+.nav-btn {
+    background: white;
+    color: black;
+    border: none;
+    font-size: 15px;
+}
+
+.month-label {
+    display: flex;
+    flex-direction: column;
+}
+
+.year {
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.month-name {
+    color: blue;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+
+/* width */
+
+.tab::-webkit-scrollbar {
+    width: 1px;
+}
+
+
+/* Track */
+
+.tab::-webkit-scrollbar-track {
+    background: #ffffff;
+}
+
+
+/* Handle */
+
+.tab::-webkit-scrollbar-thumb {
+    background: #ffffff;
+}
+
+
+/* Handle on hover */
+
+.tab::-webkit-scrollbar-thumb:hover {
+    background: #ffffff;
+}
+
+.add-btn {
+    position: absolute;
+    right: 18px;
+    margin: auto;
+    text-align: center;
+    bottom: 5px;
+    background-color: #0531ff;
+    color: white;
+    font-size: 15px;
+    border-radius: 45px;
+    padding: 0px;
+    width: 45px;
+    height: 44px;
+    border: 3px solid #1eb2e691;
+}
+
+.doneTask {
+    text-decoration: line-through;
+}
+
+.btn-delete {
+    background-color: #170101;
+    color: white;
+    font-size: 13px;
+    margin: 5px;
+}
+
+.c-box {
+    height: calc(100vh - 64px);
+    background-color: rgb(255, 255, 255);
+}
+
+.calendar-box {
+    height: calc(44vh - 40px);
+    background-color: white;
+    display: block;
+}
+
+.d-none {
+    display: none!important;
+}
+
+.tab {
+    overflow-y: scroll;
+    background-color: #eceaff;
+    padding-bottom: 30px;
+    position: relative;
+    min-height: calc(44vh - 38px);
+}
+
+.info-box {
+    height: calc(56vh - 35px);
+    margin-top: 8px;
+    color: black;
+    background-color: #eceaff;
+    border-radius: 28px 28px 0px 0px;
+    .currentdate {
+        font-size: 16px;
+        font-weight: 600;
+        text-align: center;
+        padding-top: 8px;
+    }
+}
+
+.info-box-height {
+    height: calc(100vh - 85px)!important;
+    margin-top: 8px;
+    color: black;
+    background-color: #eceaff;
+    border-radius: 28px 28px 0px 0px;
+    .currentdate {
+        font-size: 16px;
+        font-weight: 600;
+        text-align: center;
+        padding-top: 8px;
+    }
+}
+
+.bottom-sheet-content {
+    max-height: 200px;
+    overflow-y: auto;
+    ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        li {
+            padding: 8px;
+            cursor: pointer;
+            &.active {
+                background-color: #e0e0e0;
+            }
+            &:hover {
+                background-color: #f0f0f0;
+            }
+        }
+    }
+}
+
+.label-bx {
+    background-color: #dcd7d78a;
+    width: 100%;
+    overflow-x: auto;
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.labelx {
+    padding: 5px;
+    margin: 5px;
+    border-radius: 5px;
+    color: #f8f8f8;
+    font-size: 12px;
+    background-color: #787373;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.labelx-selected {
+    background-color: #0068ff;
+    color: #ffffff;
+}
+
+.flex-box {
+    display: flex;
+}
+
+.act-item {
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    font-size: 10px;
+    border: 1px solid;
+    margin: 5px;
+    width: 50px;
+    align-items: center;
+    background: white;
+    box-shadow: 1px 1px 1px 1px lightgrey;
+    cursor: pointer;
+    border-radius: 8px;
+}
+
+.act-item:hover {
+    background-color: #e0e0e0;
+}
+
+.marked {
+    background-color: #0068ff;
+}

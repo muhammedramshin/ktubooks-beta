@@ -1,0 +1,27 @@
+<div class="container">
+    <app-spinner [isLoading]="loading" [message]="'Uploading....'">
+        <!-- Your content here -->
+    </app-spinner>
+    <div class="form-group mt-2">
+        <label for="fileInput">Upload File:</label>
+        <input type="file" (change)="fileupload($event)" #fileInput>
+    </div>
+    <div *ngIf="uploadFile" class="uploaded-file">Uploaded File: {{ uploadedFile?.name }}</div>
+
+    <div class="form-group mt-2">
+        <label for="filename">Filename:</label>
+        <input class="form-control" type="text" [(ngModel)]="filename" placeholder="Enter filename">
+    </div>
+
+    <div class="form-group mt-2">
+        <label for="label">Label:</label>
+        <select name="label" id="label" class="form-control" [(ngModel)]="label">
+            <option  [value]="item" *ngFor="let item of labels">{{item}}</option>
+        </select>
+    </div>
+
+    <div class="action">
+        <button class="btn btn-success" (click)="save()">Save</button>
+        <button class="btn btn-danger" (click)="cancel()">Cancel</button>
+    </div>
+</div>

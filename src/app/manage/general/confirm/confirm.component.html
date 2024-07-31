@@ -1,0 +1,17 @@
+<div class="container box-outer">
+
+    <p>
+        {{data?.message}}
+    </p>
+
+    <div class="action-btns">
+        <button *ngIf="data?.cancel" (click)="cancel()" class="btn-cancel">
+            Cancel
+        </button>
+        <button (click)="action()" class="btn-confirm">
+            {{data?.btnOkText}}
+        </button>
+
+    </div>
+
+</div>

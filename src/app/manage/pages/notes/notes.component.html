@@ -1,0 +1,15 @@
+<div class="container">
+
+
+    <button class="btn btn-primary" (click)="exportToPdf()">DOWNLOAD</button>
+    <div class="box">
+
+        <div *ngFor="let item of allNotes" class="note">
+            <div class="notes-body">
+                <div class="note-title">{{item?.date?.seconds*1000 |date:'dd/MM/yyyy'}}</div>
+                <div *ngFor="let note of item?.notes" class="note-title">{{note.title}}</div>
+            </div>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,33 @@
+<div class="fixActionRow">
+    <h1 mat-dialog-title>Card Transaction</h1>
+    <div class="card-title">{{data.name}}</div>
+    <div mat-dialog-content>
+        <mat-form-field appearance="fill">
+            <input matInput placeholder="Description" [(ngModel)]="description" name="cardName">
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Type</mat-label>
+            <mat-select [(ngModel)]="type" name="cardType">
+                <mat-option value="spend">Spend</mat-option>
+                <mat-option value="repay">Repay</mat-option>
+                <mat-option value="cashback">Cashback</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <input matInput placeholder="amount" [(ngModel)]="amount" name="cardName">
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Spend By</mat-label>
+            <mat-select [(ngModel)]="spendby" name="cardType">
+                <mat-option value="me">Me</mat-option>
+                <mat-option value="other">other</mat-option>
+            </mat-select>
+        </mat-form-field>
+    
+    </div>
+    <div class="spacer"></div>
+    <div mat-dialog-actions align="end">
+        <button mat-button (click)="close()">CANCEL</button>
+        <button mat-button (click)="addTransaction()">CREATE</button>
+    </div>
+</div>

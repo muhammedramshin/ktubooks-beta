@@ -1,0 +1,40 @@
+<div class="card-box-with-head">
+
+    <div class="child-box">
+        <div class="label-txt">Todays</div>
+        <div class="sub-child-box">
+            <!-- ad fa icon of up -->
+            <div class="in">
+                <mat-icon class="mat-ico">arrow_upward</mat-icon>
+                <div class="margin-r">₹ {{todayIn}}</div>
+            </div>
+            <div class="out">
+                <mat-icon class="mat-ico">arrow_downward</mat-icon>
+                <div class="margin-r">₹ {{todayOut}}</div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="child-box">
+        <div class="label-txt">In Credit</div>
+        <div class="sub-child-box">
+            <div class="single-band bg-lending">₹ {{totalAmountToget}}</div>
+        </div>
+    </div>
+    <div class="child-box">
+        <div class="label-txt">Loans</div>
+        <div class="sub-child-box">
+            <div class="single-band bg-loans">₹ {{totalAmountTogive}}</div>
+        </div>
+    </div>
+    <div class="child-box">
+        <div class="label-txt">Accounts</div>
+        <div class="sub-child-box">
+            <div class="single-band bg-account">₹ {{totalAccBalence}}</div>
+        </div>
+    </div>
+
+
+
+</div>

@@ -1,0 +1,62 @@
+<div class="label-bx">
+    <div class="labelx" [ngClass]="{'labelx-selected':selectedTaskLabel=='todo'}" (click)="todo()">Todo</div>
+
+    <div class="labelx" [ngClass]="{'labelx-selected':selectedTaskLabel==label?.name}" (click)="filterByLabel(label?.name)" *ngFor="let label of tasklabels">{{label?.name}}</div>
+    <div class="labelx" [ngClass]="{'labelx-selected':selectedTaskLabel=='all'}" (click)="clearFilter()">All</div>
+    <div class="labelx" [ngClass]="{'labelx-selected':selectedTaskLabel=='done'}" (click)="done()">Done</div>
+
+</div>
+
+<div class="card-box bx">
+
+
+
+    <div class="task" *ngFor="let task of taskData">
+        <div class="task-bd">
+            <div>
+                <div (click)="markdoneconfirm(task)" [ngClass]="{'doneTask':task?.isDone}">{{task?.task}}</div>
+            </div>
+            <button class="btn btn-delete" (click)="deleteTask(task)">
+                <i class="fa fa-trash" aria-hidden="true"></i>
+            </button>
+        </div>
+        <!-- (click)="markasdone(task)" -->
+        <div class="task-ft">
+            <div class="label"> {{task?.label?task?.label:''}} </div>
+            <div class="datetask" (click)="updateTask(task)"> {{task?.createdAt?.seconds*1000 | date:'dd/MM/yyyy'}}</div>
+        </div>
+
+    </div>
+
+
+    <button class="btn btn-secondary add-btn" (click)="createTask()">+</button>
+</div>
+
+<ng-template #addtasks let-bottomSheetRef="bottomTasksRef">
+    <div class="bottom-box">
+        <mat-form-field appearance="outline">
+            <mat-label>Task</mat-label>
+            <input [(ngModel)]="taskTitle" type="text" autocomplete="off" matInput placeholder="Enter task">
+            <mat-icon matSuffix>title</mat-icon>
+        </mat-form-field>
+        <div class="label-bx-add">
+            <div class="labelx" [ngClass]="{'labelx-selected':addTaskLabel==label?.name}" (click)="addTaskLabel=label?.name" *ngFor="let label of tasklabels">{{label?.name}}</div>
+        </div>
+        <div class="d-flex justify-content-between">
+            <button class="btn btn-danger" (click)="closeBottomSheet()">Close</button>
+            <button class="btn btn-primary" *ngIf="action=='add'" (click)="createRecord()">Save</button>
+            <button class="btn btn-primary" *ngIf="action=='update'" (click)="updateRecord()">Update</button>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #markdone let-bottomSheetRef="bottomTasksRef">
+    <div class="bottom-box">
+
+        <div class="confirm-b-sheet">
+            <button class="btn btn-danger" (click)="closeBottomSheet()">Cancel</button>
+            <button class="btn btn-primary" *ngIf="!selectedTask?.isDone" (click)="markasdone()">Mark As Done</button>
+            <button class="btn btn-primary" *ngIf="selectedTask?.isDone" (click)="markasdone()">Undo Done</button>
+        </div>
+    </div>
+</ng-template>

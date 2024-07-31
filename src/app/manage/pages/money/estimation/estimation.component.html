@@ -1,0 +1,61 @@
+<table class="table table-borderd">
+    <div class="text-center totalDisplay">
+        <div>{{lastUpdated?.seconds*1000 |date:'dd/MM/yyyy HH:mm'}}</div>
+        <div class="d-flex">
+            <input type="text" class="form-control" [(ngModel)]="name" #estimateName>
+            <button class="btn btn-primary" (click)="type=='create'?create(estimateName):update()">{{type=='create'?'SAVE':'UPDATE'}}</button>
+        </div>
+        <div class="total">
+
+           
+            <div>{{total}}</div>
+           
+            <div>
+                <button class="btn btn-success" (click)="createNew()">+</button>
+                <button class="btn btn-primary mx-2" (click)="gotoList()">LIST</button>
+
+                <button class="btn " (click)="delete()">X</button>
+            </div>
+        </div>
+    </div>
+    <div class="f-block">
+        <div class="f-block-item">
+            <div class="form-box">IN
+                <input type="number" class="form-control" #inamount placeholder="amount">
+                <input type="text" class="form-control" #inlabel placeholder="label">
+                <button class="btn btn-secondary" (click)="addInItems(inamount,inlabel)">Add</button>
+            </div>
+            <div class="entry-box">
+                <div class="entry" *ngFor="let item of InItems">
+                    <div>
+                        <div class="entry-amount">{{item.amount}}</div>
+                        <div class="entry-label">{{item.label}}</div>
+                    </div>
+                    <div>
+                        <button class="btn" (click)="removeInItem(item)">X</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="f-block-item">
+            <div class="form-box">OUT
+                <input type="number" class="form-control" #outamount placeholder="amount">
+                <input type="text" class="form-control" #outlabel placeholder="label">
+                <button class="btn btn-secondary" (click)="addOutItems(outamount,outlabel)">Add</button>
+
+            </div>
+            <div class="entry-box">
+                <div class="entry" *ngFor="let item of OutItems">
+                    <div>
+                        <div class="entry-amount">{{item.amount}}</div>
+                        <div class="entry-label">{{item.label}}</div>
+                    </div>
+                    <div>
+                        <button class="btn" (click)="removeOutItem(item)">X</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</table>

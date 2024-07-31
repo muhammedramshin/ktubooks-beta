@@ -1,0 +1,5 @@
+<div class="spinner-container" [ngClass]="{'show-backdrop': isLoading}">
+    <mat-spinner *ngIf="isLoading"></mat-spinner>
+    <span class="message">{{ message }}</span>
+    <ng-content></ng-content>
+</div>

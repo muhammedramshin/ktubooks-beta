@@ -1,0 +1,67 @@
+<div class="card-box-with-head bx">
+    <mat-tab-group>
+
+        <mat-tab>
+            <ng-template mat-tab-label>
+                <span>Accounts</span>
+            </ng-template>
+            <ng2-smart-table [settings]="accountsettings" [source]="accountSource" (editConfirm)="updateAccount($event)" (createConfirm)="createAccount($event)" (deleteConfirm)="deleteAccount($event)" (custom)="updateAccountBalence($event)"></ng2-smart-table>
+        </mat-tab>
+
+
+        <mat-tab>
+            <ng-template mat-tab-label>
+                <span>Overview</span>
+            </ng-template>
+
+            <select name="type" id="type" (change)="filteracctype($event)" class="form-control">
+                <option [value]="item" *ngFor="let item of acctypes">{{item}}</option>
+                <option value="">All</option>
+            </select>
+
+
+            <div class="f-block">
+
+                <table class="table table-bordered">
+                    <tr>
+                        <th>Type</th>
+                        <th>Balence</th>
+                    </tr>
+                    <tr *ngFor="let item of accountsDatas">
+                        <td>{{item?.accounttype}}</td>
+                        <td>{{item?.balence}}</td>
+                    </tr>
+                    <tr>
+                        <th>Total</th>
+                        <th>{{totalamount}}</th>
+                    </tr>
+                </table>
+
+            </div>
+
+            <div class="f-block">
+                <div class="s-box">
+                    <div class="s-label">Total Bank </div>
+                    <div class="s-value">{{totalBankAmount}}</div>
+                </div>
+                <div class="s-box">
+                    <div class="s-label">Total Credits </div>
+                    <div class="s-value">{{totalCreditBalence}}</div>
+                </div>
+                <div class="s-box">
+                    <div class="s-label">Total Investment </div>
+                    <div class="s-value">{{totalInvestmentBalence}}</div>
+                </div>
+                <div class="s-box">
+                    <div class="s-label">Total Cash </div>
+                    <div class="s-value">{{totalCashBalence}}</div>
+                </div>
+                <div class="s-box">
+                    <div class="s-label">Total </div>
+                    <div class="s-value">{{totalBalence}}</div>
+                </div>
+            </div>
+        </mat-tab>
+       
+    </mat-tab-group>
+</div>

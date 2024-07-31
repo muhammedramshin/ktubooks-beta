@@ -1,0 +1,40 @@
+.galery {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    column-gap: 10px;
+    margin-top: 5px;
+    margin-left: 10px;
+}
+
+.item-box {
+    position: relative;
+}
+
+.item {
+    border: 1px solid black;
+    padding: 6px;
+    position: relative;
+}
+
+.label-item {
+    background-color: rgb(0 0 0 / 38%);
+    color: white;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    padding-left: 5px;
+}
+
+.actions {
+    display: flex;
+    justify-self: center;
+    align-items: center;
+    padding: 5px;
+    background: #c3c3c3;
+}
+
+.button {
+    width: 60px;
+    margin: 0px 5px;
+}

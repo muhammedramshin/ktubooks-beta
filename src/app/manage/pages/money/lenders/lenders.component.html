@@ -1,0 +1,38 @@
+<div class="card-box-with-head">
+    <mat-tab-group #tabGroup>
+        <mat-tab label="Active">
+            <div (swipeleft)="onSwipeLeft()" (swiperight)="onSwipeRight()">
+                <ng2-smart-table [settings]="settingsLendingsActive" [source]="sourceActiveLenders" (custom)="clearLending($event)"></ng2-smart-table>
+
+            </div>
+        </mat-tab>
+        <mat-tab label="Lenders">
+            <div (swipeleft)="onSwipeLeft()" (swiperight)="onSwipeRight()">
+                <ng2-smart-table [settings]="settings" [source]="source" (editConfirm)="updateLender($event)" (createConfirm)="addLender($event)" (deleteConfirm)="deleteLender($event)"></ng2-smart-table>
+            </div>
+        </mat-tab>
+        <mat-tab>
+            <ng-template mat-tab-label>
+
+                <span>Lendings</span>
+
+            </ng-template>
+
+            <div (swipeleft)="onSwipeLeft()" (swiperight)="onSwipeRight()">
+                <ng2-smart-table [settings]="settingsLendings" [source]="sourceLendings" (custom)="clearLending($event)"></ng2-smart-table>
+            </div>
+        </mat-tab>
+
+        <mat-tab label="Loans">
+            <div>
+                <ng2-smart-table [settings]="settingsLoans" [source]="sourceLoan" (custom)="clearLending($event)"></ng2-smart-table>
+            </div>
+        </mat-tab>
+
+    </mat-tab-group>
+</div>
+
+<div class="add-block">
+    <div class="mx-2"><span style="font-weight: 600;">In Credit</span> <span style="color: green; font-size: 18px; font-weight: 600; margin-left: 15px;">{{totalAmountToget}}</span></div>
+    <div class="mx-2"><span style="font-weight: 600;">On Loan</span> <span style="color: rgb(218, 16, 16); font-size: 18px; font-weight: 600; margin-left: 15px;">{{totalAmountTogive}}</span></div>
+</div>

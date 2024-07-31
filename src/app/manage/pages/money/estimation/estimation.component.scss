@@ -1,0 +1,45 @@
+.f-block {
+    display: flex;
+    justify-content: center;
+    height: calc(100vh - 315px);
+    overflow-y: scroll;
+}
+
+.f-block-item {
+    max-width: 50vw;
+}
+
+.form-box {
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 7px;
+    column-gap: 10px;
+}
+
+.total {
+    margin: 0px;
+    padding: 12px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.entry {
+    border-bottom: 1px solid lightgrey;
+    display: flex;
+    justify-content: space-between;
+}
+
+.entry-amount {
+    font-weight: bold;
+}
+
+.totalDisplay {
+    background-color: brown;
+    color: white;
+    font-weight: bold;
+    padding: 15px;
+}
+
+.entry-label {
+    font-size: 10px;
+}

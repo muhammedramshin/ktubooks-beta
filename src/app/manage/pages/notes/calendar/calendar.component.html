@@ -1,0 +1,238 @@
+<div class="c-box">
+    <div class="calendar-box" [ngClass]="{'d-none':viewCalendarInfo}">
+        <div class="head-title">
+            <button class="btn btn-primary nav-btn" (click)="prevMonth()"><i class="fa fa-chevron-circle-left "
+                    aria-hidden="true"></i></button>
+            <div class="month-label">
+                <span (click)="openYear()" class="mx-2 year">{{activeYear}}</span>
+                <span class="month-name">{{ monthName}} </span>
+            </div>
+            <button class="btn btn-primary nav-btn" (click)="nextMonth()"><i class="fa fa-chevron-circle-right "
+                    aria-hidden="true"></i></button>
+
+        </div>
+        <table class="table calendar" style="max-width:600px;margin:auto">
+            <thead>
+                <tr>
+                    <th *ngFor="let day of daysOfWeek">{{ day }}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let week of weeks">
+                    <td *ngFor="let day of week" (click)="assignInfo(day)" class="date" [ngClass]="{'today':day.isToday,'ismonth':day.isCurrentMonth,'activeSelect':day?.date==infos.date}">
+                        {{ day?.day }}
+                        <!-- <div *ngIf="day?.isToday">
+                            T
+                        </div> -->
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="info-box" #calenderBox>
+        <div class="d-flex justify-content-between" style="padding: 5px 25px;">
+            <div class="currentdate">{{infos?.date|date:'dd/MM/yyyy'}}</div>
+            <div><span (click)="toggleInfo()" class="p2">
+                <mat-icon mat-list-icon >open_in_full</mat-icon>
+            </span></div>
+        </div>
+        <mat-tab-group>
+
+
+            <mat-tab class="tab">
+                <ng-template mat-tab-label>
+                    <div [matBadge]="returnInfosWithPendingTasksCount(infos)" matBadgePosition="before" matBadgeSize="medium" matBadgeOverlap="false">Tasks</div>
+                </ng-template>
+                <div class="tab">
+                    <table class="table table-striped table-bordered">
+                        <tr *ngFor="let task of infos?.tasks;index as i">
+                            <td class="d-flex justify-content-between">
+                                <div (click)="markasdone(infos,i)" [ngClass]="{'doneTask':task?.isDone}">{{task?.task}}
+                                </div>
+                                <button class="btn btn-delete" (click)="deleteTask(infos,i)">
+                                    <i class="fa fa-trash" aria-hidden="true"></i>
+                                </button>
+                            </td>
+
+                        </tr>
+                    </table>
+                    <button class="add-btn" (click)="createTask()">
+                        <i class="fa fa-plus" aria-hidden="true"></i>
+                    </button>
+                </div>
+            </mat-tab>
+            <mat-tab>
+                <ng-template mat-tab-label>
+                    <span [matBadge]="statements?.length" matBadgePosition="before" matBadgeSize="medium" matBadgeOverlap="false">Pins</span>
+                </ng-template>
+                <div class="tab">
+                    <table class="table table-striped table-bordered">
+                        <tr *ngFor="let note of statements;index as i;">
+                            <td class="d-flex justify-content-between">{{note?.notes}}
+                                <!-- <button class="btn btn-delete" (click)="deleteStatement(infos,i)">
+                                    <i class="fa fa-trash" aria-hidden="true"></i>
+                                </button> -->
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
+            </mat-tab>
+
+            <mat-tab>
+                <ng-template mat-tab-label>
+                    <span [matBadge]="infos?.notes?.length" matBadgePosition="before" matBadgeSize="medium" matBadgeOverlap="false">Notes</span>
+                </ng-template>
+                <div class="tab">
+
+                    <table class="table table-striped table-bordered">
+                        <tr *ngFor="let note of infos?.notes;index as i;">
+                            <td class="d-flex justify-content-between">{{note?.title}}
+                                <button class="btn btn-delete" (click)="deleteNote(infos,i)">
+                                    <i class="fa fa-trash" aria-hidden="true"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <button class="add-btn" (click)="createNote()">
+                        <i class="fa fa-plus" aria-hidden="true"></i>
+                    </button>
+                </div>
+
+            </mat-tab>
+
+            <mat-tab class="tab">
+                <ng-template mat-tab-label>
+                    <span [matBadge]="infos?.events?.length" matBadgePosition="before" matBadgeSize="medium" matBadgeOverlap="false">Events</span>
+                </ng-template>
+                <div class="tab">
+                    <table class="table table-striped table-bordered">
+                        <tr *ngFor="let note of infos?.events;index as i">
+                            <td class="d-flex justify-content-between">{{note?.title}}
+                                <button class="btn btn-delete" (click)="deleteEvent(infos,i)">
+                                    <i class="fa fa-trash" aria-hidden="true"></i>
+                                </button>
+                            </td>
+
+                        </tr>
+                    </table>
+                    <button class="add-btn" (click)="createEvent()">
+                        <i class="fa fa-plus" aria-hidden="true"></i>
+                    </button>
+                </div>
+
+            </mat-tab>
+
+            <mat-tab class="tab">
+                <ng-template mat-tab-label>
+                    <span [matBadge]="infos?.upcommingEvents?.length" matBadgePosition="before" matBadgeSize="medium" matBadgeOverlap="false">Activity</span>
+                </ng-template>
+                <div class="tab">
+
+
+                    <div class="flex-box">
+                        <div class="act-item" *ngFor="let item of activityTypes;index as i" [ngClass]="{'marked':item?.status}" (click)="createActvity(infos,item,i)">
+                            {{item?.type}}
+                            <mat-icon mat-list-icon>{{item?.icon}}</mat-icon>
+                        </div>
+                    </div>
+
+                </div>
+
+            </mat-tab>
+            <mat-tab class="tab">
+                <ng-template mat-tab-label>
+                    <span [matBadge]="infos?.upcommingEvents?.length" matBadgePosition="before" matBadgeSize="medium" matBadgeOverlap="false">Upcomming</span>
+                </ng-template>
+                <div class="tab">
+                    <table class="table table-striped table-bordered">
+                        <tr *ngFor="let note of infos?.upcommingEvents;index as i">
+                            <td class="d-flex justify-content-between">
+                                {{note?.title}}
+                                <span>{{note?.date | date:'fullDate'}}</span>
+                            </td>
+
+                        </tr>
+                    </table>
+                    <button class="add-btn" (click)="createEvent()">
+                        <i class="fa fa-plus" aria-hidden="true"></i>
+                    </button>
+                </div>
+
+            </mat-tab>
+
+
+
+        </mat-tab-group>
+    </div>
+</div>
+
+<ng-template #bottomSheetTemplate let-bottomSheetRef="bottomSheetRef">
+    <div class="bottom-sheet-content">
+        <ul>
+            <li *ngFor="let year of yearsList" [id]="year" [class.active]="year === activeYear" (click)="changeYear(year)">
+                {{ year }}
+            </li>
+        </ul>
+    </div>
+</ng-template>
+
+<ng-template #addnotes let-bottomSheetRef="bottomNoteRef">
+    <div class="bottom-box">
+        <mat-form-field appearance="outline">
+            <mat-label>Note</mat-label>
+            <input [(ngModel)]="noteTitle" type="text" autocomplete="off" matInput placeholder="Enter note">
+            <mat-icon matSuffix>title</mat-icon>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Description</mat-label>
+            <input [(ngModel)]="noteDescription" type="text" autocomplete="off" matInput placeholder="Enter details">
+            <mat-icon matSuffix>Description</mat-icon>
+        </mat-form-field>
+        <div class="d-flex justify-content-between">
+            <button class="btn btn-danger" (click)="closeBottomSheet()">Close</button>
+            <button class="btn btn-primary" (click)="saveNote(infos)">Save</button>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #addevents let-bottomSheetRef="bottomEventRef">
+    <div class="bottom-box">
+        <mat-form-field appearance="outline">
+            <mat-label>Event</mat-label>
+            <input [(ngModel)]="eventTitle" type="text" autocomplete="off" matInput placeholder="Enter note">
+            <mat-icon matSuffix>title</mat-icon>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Description</mat-label>
+            <input [(ngModel)]="eventDescription" type="text" autocomplete="off" matInput placeholder="Enter details">
+            <mat-icon matSuffix>Description</mat-icon>
+        </mat-form-field>
+        <div class="d-flex justify-content-between">
+            <button class="btn btn-danger" (click)="closeBottomSheet()">Close</button>
+            <button class="btn btn-primary" (click)="saveEvent(infos)">Save</button>
+        </div>
+    </div>
+</ng-template>
+
+
+<ng-template #addtasks let-bottomSheetRef="bottomTasksRef">
+    <div class="bottom-box">
+        <mat-form-field appearance="outline">
+            <mat-label>Task</mat-label>
+            <input [(ngModel)]="taskTitle" type="text" autocomplete="off" matInput placeholder="Enter task">
+            <mat-icon matSuffix>title</mat-icon>
+        </mat-form-field>
+
+        <div class="label-bx">
+            <div class="labelx" [ngClass]="{'labelx-selected':selectedTaskLabel==label?.name}" (click)="selectedTaskLabel=label?.name" *ngFor="let label of tasklabels">{{label?.name}}</div>
+        </div>
+
+        <div class="d-flex justify-content-between">
+            <button class="btn btn-danger" (click)="closeBottomSheet()">Close</button>
+            <button class="btn btn-primary" (click)="sendToGeneralTasks(infos)">Save</button>
+        </div>
+    </div>
+</ng-template>

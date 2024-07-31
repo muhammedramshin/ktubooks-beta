@@ -1,0 +1,21 @@
+<div *ngIf="actiontype!='view'">
+    <input type="text" class="form-control" [(ngModel)]="doctitle">
+    <quill-editor class="quill-css" [(ngModel)]="docdata" [modules]="quillConfig"></quill-editor>
+    <div class="action-bar">
+        <button class="btn btn-primary" (click)="updateAndStay()">Update</button>
+        <button class="btn btn-secondary" (click)="backToDocs()">Back</button>
+        <button class="btn btn-success" (click)="saveDoc()">Save</button>
+
+
+        <!-- <button class="btn btn-danger" (click)="close()">Close</button> -->
+    </div>
+</div>
+<div *ngIf="actiontype=='view'">
+    <div class="title">{{doctitle}}</div>
+    <div class="quill-css">
+        <quill-view-html [content]="docdata"></quill-view-html>
+    </div>
+    <div class="action-bar">
+        <button class="btn btn-secondary" (click)="backToDocs()">Back</button>
+    </div>
+</div>

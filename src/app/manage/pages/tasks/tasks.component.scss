@@ -1,0 +1,127 @@
+.doneTask {
+    text-decoration: line-through;
+}
+
+.bx {
+    padding-top: 50px;
+    background: #f1f1f1;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-bottom: 50px;
+}
+
+.task {
+    padding: 5px;
+    background: white;
+    border-bottom: 1px solid lightgrey;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    margin-bottom: 6px;
+    border-radius: 8px;
+}
+
+.task-bd {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    position: relative;
+    justify-content: space-between;
+}
+
+.task-ft {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    position: relative;
+    justify-content: space-between;
+    border-top: 1px solid #f5f3f3;
+}
+
+.label {
+    padding: 0px 15px;
+    margin: 5px 5px 0px 0px;
+    border-radius: 5px;
+    background-color: #f5f3f3;
+    color: #808080a1;
+    font-size: 9px;
+    cursor: pointer;
+}
+
+.add-btn {
+    position: absolute;
+    right: 27px;
+    margin: auto;
+    text-align: center;
+    bottom: 10px;
+    background-color: #0531ff;
+    color: white;
+    font-size: 26px;
+    border-radius: 45px;
+    padding: 0px;
+    width: 45px;
+    border: 3px solid #1eb2e691;
+}
+
+.btn-delete {
+    background-color: #a9a9a9;
+    color: white;
+    font-size: 13px;
+    margin: 5px;
+    width: 19px;
+    border-radius: 50px;
+}
+
+.datetask {
+    font-size: 8px;
+    color: #808080a1;
+    margin-bottom: 0px;
+    float: right;
+    cursor: pointer;
+}
+
+.label-bx {
+    background-color: #ffffff;
+    width: 100%;
+    overflow-x: auto;
+    display: flex;
+    margin-bottom: 10px;
+    position: absolute;
+    top: 0;
+    align-items: center;
+    left: 0;
+    z-index: 999;
+}
+
+.label-bx-add {
+    background-color: #dcd7d7;
+    width: 100%;
+    overflow-x: scroll;
+    display: inline-flex;
+    margin-bottom: 10px;
+}
+
+.labelx {
+    padding: 5px;
+    margin: 5px;
+    border-radius: 5px;
+    color: #f8f8f8;
+    font-size: 12px;
+    background-color: #d1d1d1;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.labelx-selected {
+    background-color: #0068ff;
+    color: #ffffff;
+}
+
+.confirm-b-sheet {
+    display: flex;
+    column-gap: 5px;
+    flex-direction: column;
+    row-gap: 15px;
+    padding-bottom: 10px;
+}

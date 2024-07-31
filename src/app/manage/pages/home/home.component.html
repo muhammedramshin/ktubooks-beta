@@ -1,0 +1,61 @@
+<div class="card-box bx my-2 mx-2">
+    
+    <div class="text-box-out">
+
+        <div class="text-box">
+            <input type="text" placeholder="type here.." [(ngModel)]="note" class="form-control">
+            <button class="btn snd-btn" type="button" (click)="saveNote()">
+                <mat-icon mat-list-icon class="icon-small"  >send</mat-icon>
+            </button>
+        </div>
+
+        <div class="slider-container" *ngIf="taskData">
+            <div class="slider" [style.transform]="transform" [style.transition]="transition">
+              <div routerLink="tasks" *ngFor="let text of slidingTasks" class="slide">
+                <mat-icon mat-list-icon class="icon-px-small" >task_alt</mat-icon>    {{ text }}
+              </div>
+            </div>
+          </div>
+      
+          
+    </div>
+    <div class="text-box-out-down">
+        <div class="slider-container" *ngIf="upcommingEvents">
+            <div class="slider-1" [style.transform]="transformEvents" [style.transition]="transition">
+              <div routerLink="allevents" *ngFor="let text of upcommingEvents" class="slide-1">
+                <mat-icon mat-list-icon class="icon-px-small" >event_available</mat-icon>
+                 {{ text.title }} | {{ text.date?.seconds*1000 |date:'EE dd/MM/yyyy'}}
+              </div>
+            </div>
+          </div>
+    </div>
+
+    <div class="contents">
+
+        <div class="menu">
+            <mat-icon mat-list-icon class="icon-px" routerLink="calandar">calendar_month</mat-icon>
+        </div>
+        <div class="menu">
+            <mat-icon mat-list-icon class="icon-px" routerLink="money">account_balance_wallet</mat-icon>
+        </div>
+        <div class="menu">
+            <mat-icon mat-list-icon class="icon-px" routerLink="card-manager">credit_card</mat-icon>
+        </div>
+        <div class="menu">
+            <mat-icon mat-list-icon class="icon-px" routerLink="date-book">event_available</mat-icon>
+        </div>
+        <div class="menu">
+            <mat-icon mat-list-icon class="icon-px" routerLink="quickcopy">content_copy</mat-icon>
+        </div>
+        <div class="menu">
+            <mat-icon mat-list-icon class="icon-px" routerLink="contacts">contacts</mat-icon>
+        </div>
+        <div class="menu">
+            <mat-icon mat-list-icon class="icon-px" routerLink="tasks">task_alt</mat-icon>
+        </div>
+        <div class="menu">
+            <mat-icon mat-list-icon class="icon-px" routerLink="cred-book">lock</mat-icon>
+        </div>
+    </div>
+
+</div>

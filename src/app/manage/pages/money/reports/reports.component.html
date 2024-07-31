@@ -1,0 +1,60 @@
+<div class="container">
+    <div class="totalbar">
+
+        <div style="color:green">
+            <span class="t-label">IN :</span> {{totalIncome}}
+        </div>
+        <div style="color:red">
+            <span class="t-label">OUT:</span> {{totalExpence}}
+        </div>
+    </div>
+    <div class="inputs">
+        <div class="input-item">
+            <mat-form-field class="dateinput">
+                <mat-label>Year</mat-label>
+                <mat-select [(value)]="selectedYear" (selectionChange)="filterMonthLineChart()">
+                    <mat-option *ngFor="let year of yearList" [value]="year.id">
+                        {{year.name}}
+                    </mat-option>
+                </mat-select>
+
+            </mat-form-field>
+            <!-- select month -->
+
+        </div>
+        <div class="input-item">
+
+            <mat-form-field class="dateinput">
+                <mat-label>Month</mat-label>
+                <mat-select [(value)]="selectedMonth" (selectionChange)="filterMonthLineChart()">
+                    <mat-option *ngFor="let month of monthList" [value]="month.id">
+                        {{month.name}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+
+    </div>
+
+
+
+
+
+
+    <div class="charts">
+        <google-chart #chart title="Expence by category" [type]="expenceCategoryPieChart?.chartType" [data]="expencetypePieChart" [options]="options" [dynamicResize]="true">
+        </google-chart>
+    </div>
+
+    <!-- select year -->
+
+
+    <div class="charts">
+
+
+        <google-chart [type]="linetype" title="Monthly Income / Expence" [data]="monthlineChartData?.data" [columns]="chartData.columnNames" [dynamicResize]="true" [options]="chartData.options">
+
+        </google-chart>
+
+    </div>

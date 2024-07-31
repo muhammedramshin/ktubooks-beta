@@ -1,0 +1,21 @@
+<div class="actions">
+
+    <input type="text" class="form-control" placeholder="search" [(ngModel)]="search" (keyup)="searchFile()">
+    <button class="btn btn-primary button" (click)="createnew()">  <mat-icon mat-list-icon>add</mat-icon></button>
+
+</div>
+
+<div class="docs">
+
+    <div *ngFor="let item of alldocs" [matMenuTriggerFor]="menu" class="item-box">
+        <img class="item" src="assets\document.jpg" width="100px" height="100px" alt="">
+
+        <div class="label-item">{{item.title}}</div>
+        <mat-menu #menu="matMenu">
+            <button mat-menu-item (click)="edit(item)">Edit</button>
+            <button mat-menu-item (click)="view(item)">View</button>
+            <button mat-menu-item (click)="delete(item?.id)">Remove</button>
+            <!-- Add more menu items as needed -->
+        </mat-menu>
+    </div>
+</div>

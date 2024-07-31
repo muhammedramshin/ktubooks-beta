@@ -1,0 +1,47 @@
+.container {
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.uploaded-file {
+    margin-top: 10px;
+    font-style: italic;
+}
+
+
+/* Optional: adjust the styling of the file input */
+
+input[type="file"] {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    background-color: #f9f9f9;
+    width: 100%;
+}
+
+
+/* Optional: adjust the styling of the select input */
+
+select.form-control {
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    background-color: #f9f9f9;
+}
+
+.action {
+    display: flex;
+    align-items: center;
+    column-gap: 19px;
+    justify-content: end;
+}
